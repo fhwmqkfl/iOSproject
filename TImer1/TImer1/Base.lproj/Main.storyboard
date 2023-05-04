@@ -28,6 +28,9 @@
                                         <state key="normal" title="RESET">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="resetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nOR-Fb-Ozn"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6t-1f-bOe">
                                         <rect key="frame" x="194" y="0.0" width="179" height="50"/>
@@ -37,6 +40,9 @@
                                         <state key="normal" title="START">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="timerStartButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WWn-Cl-jJe"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -82,6 +88,9 @@
                                             </label>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ThP-G2-0KL">
                                                 <rect key="frame" x="53" y="0.0" width="267" height="31"/>
+                                                <connections>
+                                                    <action selector="sliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="H5W-l6-iks"/>
+                                                </connections>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60초" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymG-TG-Lch">
                                                 <rect key="frame" x="328" y="0.0" width="45" height="30"/>
@@ -119,6 +128,10 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DsT-ky-07d" secondAttribute="bottom" constant="30" id="zgE-9H-lAj"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="slider" destination="ThP-G2-0KL" id="Rat-et-RPa"/>
+                        <outlet property="timerLabel" destination="dq0-dM-T1M" id="95A-VF-zfP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
