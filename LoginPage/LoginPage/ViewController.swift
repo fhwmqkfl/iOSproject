@@ -92,7 +92,7 @@ class ViewController: UIViewController {
         btn.setTitle("표시", for: .normal)
         btn.setTitleColor(.systemGray2, for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .light)
-        //        btn.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControl.Event#>)
+        btn.addTarget(self, action: #selector(passwordSecureModeSetting), for: .touchUpInside)
         
         return btn
     }()
@@ -116,6 +116,17 @@ class ViewController: UIViewController {
         return button
     }()
     
+    // MARK: - 비밀번호 재설정 버튼
+    private let passwordResetButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .clear
+        button.setTitle("비밀번호 재설정", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.addTarget(self, action: #selector(resetbuttonTapped), for: .touchUpInside)
+        
+        return button
+    }()
+    
     // MARK: - 스택뷰
     lazy var stackView: UIStackView = {
         let st = UIStackView(arrangedSubviews: [emailTextFieldView, passwordTextFieldView, loginButton])
@@ -127,17 +138,6 @@ class ViewController: UIViewController {
         return st
     }()
     
-    
-    // MARK: - 비밀번호 재설정 버튼
-    private let passwordResetButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .clear
-        button.setTitle("비밀번호 재설정", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-//        button.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControl.Event#>)
-        
-        return button
-    }()
     // 3개의 각 텍스트필드 및 로그인 버튼의 높이 실행
     private let textViewHeight: CGFloat = 48
     
@@ -200,7 +200,6 @@ class ViewController: UIViewController {
 
         ])
         
-        
         // 방법 1
         // emailTextFIeld 레이아웃
         emailTextField.leadingAnchor.constraint(equalTo: emailTextFieldView.leadingAnchor, constant: 8).isActive = true   // left
@@ -209,7 +208,26 @@ class ViewController: UIViewController {
         emailTextField.bottomAnchor.constraint(equalTo: emailTextFieldView.bottomAnchor, constant: 2).isActive = true // botton
         
         
+    }
+    
+    @objc func resetbuttonTapped() {
+        // alert 창을 띄운다
+        let alert = UIAlertController(title: "비밀번호 바꾸기", message: "비밀번호를 바꾸시겠습니까?", preferredStyle: .alert)
         
+        let success = UIAlertAction(title: "확인", style: .default) { action in
+            print("확인버튼이 눌렸습니다")
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel) { cancel in
+            print("취소버튼이 눌렸습니다")
+        }
+        alert.addAction(success)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true)
+    }
+    
+    @objc func passwordSecureModeSetting() {
+        passwordTextField.isSecureTextEntry.toggle()
     }
 }
 
