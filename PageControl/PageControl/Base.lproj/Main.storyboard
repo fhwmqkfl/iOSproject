@@ -9,6 +9,56 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Fourth View Controller-->
+        <scene sceneID="Nkw-rS-V08">
+            <objects>
+                <viewController storyboardIdentifier="FourthViewController" id="Jy6-vi-QYZ" customClass="FourthViewController" customModule="PageControl" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="m4K-h4-QtS">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RNY-ec-rTX">
+                                <rect key="frame" x="146.66666666666666" y="670" width="100" height="33"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="i9W-N5-mdP"/>
+                                    <constraint firstAttribute="height" constant="33" id="xzQ-JM-1h8"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="z17-Bd-hx6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="Jy6-vi-QYZ" eventType="touchUpInside" id="JUA-NB-Vic"/>
+                                    <action selector="backButtonTappted:" destination="Hu5-m8-Ojw" eventType="touchUpInside" id="BcC-Nk-stf"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SecondViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fpc-fE-465">
+                                <rect key="frame" x="111.66666666666669" y="381" width="170" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="r7W-4R-3Vc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Fpc-fE-465" firstAttribute="centerY" secondItem="m4K-h4-QtS" secondAttribute="centerY" id="3cI-R7-Tcs"/>
+                            <constraint firstItem="r7W-4R-3Vc" firstAttribute="bottom" secondItem="RNY-ec-rTX" secondAttribute="bottom" constant="80" id="WPK-fE-cxp"/>
+                            <constraint firstItem="Fpc-fE-465" firstAttribute="centerX" secondItem="m4K-h4-QtS" secondAttribute="centerX" id="eyG-cU-TjR"/>
+                            <constraint firstItem="RNY-ec-rTX" firstAttribute="centerX" secondItem="m4K-h4-QtS" secondAttribute="centerX" id="lLi-Wx-UNL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mainLabel" destination="Fpc-fE-465" id="Yn8-MV-j5f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gcZ-2d-mXf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1073" y="520"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -80,6 +130,9 @@
                                         <state key="normal" title="StoryBoard with Button Segue">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="Jy6-vi-QYZ" kind="presentation" identifier="toFourthVC" id="kRP-mg-a8o"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -91,6 +144,9 @@
                             <constraint firstItem="O8L-2a-eNe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="180" id="VKQ-lA-M9f"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="42q-bS-J0g" kind="presentation" identifier="toThirdVC" id="aJ0-gz-6fQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -141,7 +197,54 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K8j-qA-hpi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1111" y="4"/>
+            <point key="canvasLocation" x="-653" y="4"/>
+        </scene>
+        <!--Third View Controller-->
+        <scene sceneID="rfQ-6L-qHr">
+            <objects>
+                <viewController storyboardIdentifier="ThirdViewController" id="42q-bS-J0g" customClass="ThirdViewController" customModule="PageControl" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ylk-Mb-VzA" customClass="Third">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ThirdViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1Y-4L-tKJ">
+                                <rect key="frame" x="120.66666666666669" y="381" width="152" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4DW-3W-Sb9">
+                                <rect key="frame" x="146.66666666666666" y="670" width="100" height="33"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="8fV-NP-sdb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonTappted:" destination="42q-bS-J0g" eventType="touchUpInside" id="SxU-K6-675"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hPV-n7-7bk"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hPV-n7-7bk" firstAttribute="bottom" secondItem="4DW-3W-Sb9" secondAttribute="bottom" constant="80" id="5Le-Br-hok"/>
+                            <constraint firstItem="4DW-3W-Sb9" firstAttribute="centerX" secondItem="Ylk-Mb-VzA" secondAttribute="centerX" id="5jK-zn-bfC"/>
+                            <constraint firstItem="l1Y-4L-tKJ" firstAttribute="centerX" secondItem="Ylk-Mb-VzA" secondAttribute="centerX" id="jJ2-pq-efd"/>
+                            <constraint firstItem="l1Y-4L-tKJ" firstAttribute="centerY" secondItem="Ylk-Mb-VzA" secondAttribute="centerY" id="qbL-uN-Xl9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mainLabel" destination="l1Y-4L-tKJ" id="tbn-5J-jzz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4TN-Ni-V4r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1074" y="-192"/>
         </scene>
     </scenes>
     <resources>
