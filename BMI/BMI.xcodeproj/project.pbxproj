@@ -15,6 +15,7 @@
 		CC9CADB62A08FD5F00806CB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC9CADB42A08FD5F00806CB3 /* LaunchScreen.storyboard */; };
 		CC9CADBE2A09103000806CB3 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9CADBD2A09103000806CB3 /* SecondViewController.swift */; };
 		CC9CADC02A0910E700806CB3 /* BMI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9CADBF2A0910E700806CB3 /* BMI.swift */; };
+		CC9CADC52A09218E00806CB3 /* BMICalculateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9CADC42A09218E00806CB3 /* BMICalculateManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		CC9CADB72A08FD5F00806CB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC9CADBD2A09103000806CB3 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		CC9CADBF2A0910E700806CB3 /* BMI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMI.swift; sourceTree = "<group>"; };
+		CC9CADC42A09218E00806CB3 /* BMICalculateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMICalculateManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,17 +62,42 @@
 		CC9CADA82A08FD5E00806CB3 /* BMI */ = {
 			isa = PBXGroup;
 			children = (
+				CC9CADC32A091F9100806CB3 /* Models */,
+				CC9CADC22A091F8800806CB3 /* Views */,
+				CC9CADC12A091F7800806CB3 /* Controllers */,
 				CC9CADA92A08FD5E00806CB3 /* AppDelegate.swift */,
 				CC9CADAB2A08FD5E00806CB3 /* SceneDelegate.swift */,
-				CC9CADAD2A08FD5E00806CB3 /* ViewController.swift */,
-				CC9CADBD2A09103000806CB3 /* SecondViewController.swift */,
 				CC9CADAF2A08FD5E00806CB3 /* Main.storyboard */,
-				CC9CADBF2A0910E700806CB3 /* BMI.swift */,
 				CC9CADB22A08FD5F00806CB3 /* Assets.xcassets */,
 				CC9CADB42A08FD5F00806CB3 /* LaunchScreen.storyboard */,
 				CC9CADB72A08FD5F00806CB3 /* Info.plist */,
 			);
 			path = BMI;
+			sourceTree = "<group>";
+		};
+		CC9CADC12A091F7800806CB3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CC9CADAD2A08FD5E00806CB3 /* ViewController.swift */,
+				CC9CADBD2A09103000806CB3 /* SecondViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CC9CADC22A091F8800806CB3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CC9CADC32A091F9100806CB3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CC9CADBF2A0910E700806CB3 /* BMI.swift */,
+				CC9CADC42A09218E00806CB3 /* BMICalculateManager.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC9CADC02A0910E700806CB3 /* BMI.swift in Sources */,
+				CC9CADC52A09218E00806CB3 /* BMICalculateManager.swift in Sources */,
 				CC9CADBE2A09103000806CB3 /* SecondViewController.swift in Sources */,
 				CC9CADAE2A08FD5E00806CB3 /* ViewController.swift in Sources */,
 				CC9CADAA2A08FD5E00806CB3 /* AppDelegate.swift in Sources */,
