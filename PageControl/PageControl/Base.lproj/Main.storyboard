@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="O8L-2a-eNe">
-                                <rect key="frame" x="71.666666666666686" y="238" width="250" height="300"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="O8L-2a-eNe">
+                                <rect key="frame" x="71.666666666666686" y="239" width="250" height="300"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqh-YB-fRI">
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="45"/>
@@ -88,12 +88,60 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="O8L-2a-eNe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4Xa-kD-dfX"/>
+                            <constraint firstItem="O8L-2a-eNe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="180" id="VKQ-lA-M9f"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="138" y="4"/>
+        </scene>
+        <!--Second View Controller-->
+        <scene sceneID="Dwf-Zs-aNd">
+            <objects>
+                <viewController storyboardIdentifier="SecondViewController" id="Hu5-m8-Ojw" customClass="SecondViewController" customModule="PageControl" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rIF-Tf-rrl">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SecondViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cye-uk-KIN">
+                                <rect key="frame" x="111.66666666666669" y="415.66666666666669" width="170" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5l-PV-nzW">
+                                <rect key="frame" x="146.66666666666666" y="705" width="100" height="33"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="3X1-za-x4T"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonTappted:" destination="Hu5-m8-Ojw" eventType="touchUpInside" id="q5R-el-bA3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5Ho-Os-fhu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5Ho-Os-fhu" firstAttribute="bottom" secondItem="j5l-PV-nzW" secondAttribute="bottom" constant="80" id="Zw8-cW-BhD"/>
+                            <constraint firstItem="cye-uk-KIN" firstAttribute="centerX" secondItem="rIF-Tf-rrl" secondAttribute="centerX" id="aJo-uy-yYK"/>
+                            <constraint firstItem="cye-uk-KIN" firstAttribute="centerY" secondItem="rIF-Tf-rrl" secondAttribute="centerY" id="mYy-dH-z5y"/>
+                            <constraint firstItem="j5l-PV-nzW" firstAttribute="centerX" secondItem="rIF-Tf-rrl" secondAttribute="centerX" id="yy1-2L-ITS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mainLabel" destination="cye-uk-KIN" id="DPg-Qb-1hv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K8j-qA-hpi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1111" y="4"/>
         </scene>
     </scenes>
     <resources>
