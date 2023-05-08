@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     
     // MARK: - email
     private lazy var emailTextFieldView: UIView = {
@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         textField.spellCheckingType = .no
         textField.autocorrectionType = .no
         textField.clearsOnBeginEditing = true
-//        textField.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControl.Event#>)
+        textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
         
         return textField
     }()
@@ -82,7 +82,7 @@ class ViewController: UIViewController {
 
         // 비밀번호라 추가처리
         textField.isSecureTextEntry = true
-//        textField.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControl.Event#>)
+        textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
         
         return textField
     }()
@@ -111,7 +111,7 @@ class ViewController: UIViewController {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.isEnabled = false
         
-//        button.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControl.Event#>)
+        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
         return button
     }()
@@ -243,6 +243,10 @@ class ViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
+    @objc func loginButtonTapped() {
+        print("로그인 버튼이 눌러졌습니다")
+    }
 }
 
 
@@ -293,5 +297,25 @@ extension ViewController: UITextFieldDelegate {
             }
         }
     }
+    
+    // 로그인 버튼 확인 여부 체크
+    @objc func textFieldEditingChanged(_ textField: UITextField) {
+        if textField.text?.count == 1 {
+            if textField.text?.first == " " {
+                textField.text = ""
+                return
+            }
+            guard
+                let email = emailTextField.text, !email.isEmpty,
+                let password = passwordTextField.text, !password.isEmpty else {
+                loginButton.backgroundColor = .clear
+                loginButton.isEnabled = false
+                return
+            }
+            loginButton.backgroundColor = .red
+            loginButton.isEnabled = true
+        }
+    }
+    
 }
  
