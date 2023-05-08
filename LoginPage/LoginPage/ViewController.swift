@@ -141,8 +141,15 @@ class ViewController: UIViewController {
     // 3개의 각 텍스트필드 및 로그인 버튼의 높이 실행
     private let textViewHeight: CGFloat = 48
     
+    // 입력창 선택시 레이블 이동을 구현하기위한 레이아웃 설정
+    lazy var emailInfoLabelCenterYConstraint = emailInfoLabel.centerYAnchor.constraint(equalTo: emailTextFieldView.centerYAnchor) // y축 정렬제약
+    lazy var passwordInfoLabelCenterYConstraint = passwordInfoLabel.centerYAnchor.constraint(equalTo: passwordTextFieldView.centerYAnchor) // y축 정렬제약
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
         
         makeUI()
         
@@ -175,12 +182,15 @@ class ViewController: UIViewController {
             // emailInfoLabel 레이아웃
             emailInfoLabel.leadingAnchor.constraint(equalTo: emailTextFieldView.leadingAnchor, constant: 8),
             emailInfoLabel.trailingAnchor.constraint(equalTo: emailTextFieldView.trailingAnchor, constant: 8),
-            emailInfoLabel.centerYAnchor.constraint(equalTo: emailTextFieldView.centerYAnchor, constant: 0),
+            // label이 동적으로 움직이게 하기위해 가로 중앙 고정기능 끔
+//            emailInfoLabel.centerYAnchor.constraint(equalTo: emailTextFieldView.centerYAnchor, constant: 0),
+            emailInfoLabelCenterYConstraint,
             
             // passwordInfoLabel 레이아웃
             passwordInfoLabel.leadingAnchor.constraint(equalTo: passwordTextFieldView.leadingAnchor, constant: 8),
             passwordInfoLabel.trailingAnchor.constraint(equalTo: passwordTextFieldView.trailingAnchor, constant: 8),
-            passwordInfoLabel.centerYAnchor.constraint(equalTo: passwordTextFieldView.centerYAnchor),
+//            passwordInfoLabel.centerYAnchor.constraint(equalTo: passwordTextFieldView.centerYAnchor),
+            passwordInfoLabelCenterYConstraint,
             
             // passwordTextField 레이아웃
             passwordTextField.topAnchor.constraint(equalTo:passwordTextFieldView.topAnchor , constant: 15),
@@ -229,6 +239,59 @@ class ViewController: UIViewController {
     @objc func passwordSecureModeSetting() {
         passwordTextField.isSecureTextEntry.toggle()
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }
 
+
+extension ViewController: UITextFieldDelegate {
+    // 텍스트 필드 입력이 시작되면 레이블이 작아짐
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == emailTextField {
+            emailTextFieldView.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+            emailInfoLabel.font = UIFont.systemFont(ofSize: 11)
+            
+            // 오토레이아웃 업데이트(이동시킴)
+            emailInfoLabelCenterYConstraint.constant = -13
+        }
+        
+        if textField == passwordTextField {
+            passwordTextFieldView.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+            passwordInfoLabel.font = UIFont.systemFont(ofSize: 11)
+            
+            // 오토레이아웃 업데이트(이동시킴)
+            passwordInfoLabelCenterYConstraint.constant = -13
+        }
+        // 이대로는 애니메이션처럼 보이긴하지만 아님 -> 애니메이션 효과 추가(일단 이대로 이해하고 넘어가자)
+        UIView.animate(withDuration: 0.3) {
+            self.stackView.layoutIfNeeded()
+        }
+    }
+    // 텍스트 필드 입력이 끝나면
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == emailTextField {
+            emailTextFieldView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+            // 빈칸이면 원래대로 되돌리기
+            if emailTextField.text == "" {
+                emailInfoLabel.font = UIFont.systemFont(ofSize: 18)
+                emailInfoLabelCenterYConstraint.constant = 0
+            }
+        }
+        
+        if textField == passwordTextField {
+            passwordTextFieldView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+            // 빈칸이면 원래대로 되돌리기
+            if passwordTextField.text == "" {
+                passwordInfoLabel.font = UIFont.systemFont(ofSize: 18)
+                passwordInfoLabelCenterYConstraint.constant = 0
+            }
+        // 이대로는 애니메이션처럼 보이긴하지만 아님 -> 애니메이션 효과 추가(일단 이대로 이해하고 넘어가자)
+        UIView.animate(withDuration: 0.3) {
+            self.stackView.layoutIfNeeded()
+            }
+        }
+    }
+}
  
