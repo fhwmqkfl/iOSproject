@@ -46,15 +46,14 @@ final class ViewController: UIViewController {
         if segue.identifier == "toSecondVC" {
             let secondVC = segue.destination as! SecondViewController
             // BMI결과값을 다음 화면에 넘겨줌
-            secondVC.bmiNumber = bmiManager.getBMIReseult()
-            secondVC.adviceString = bmiManager.getAdviceString()
-            secondVC.bmiColor = bmiManager.backgroundColor()
+//            secondVC.bmiNumber = bmiManager.getBMIReseult()
+//            secondVC.adviceString = bmiManager.getAdviceString()
+//            secondVC.bmiColor = bmiManager.backgroundColor()
+            secondVC.bmi = bmiManager.getBMI(height: heightTextField.text!, weight: weightTextField.text!)
         }
     }
     // BMI 결과값 계산
     @IBAction func calculateButtonClicked(_ sender: UIButton) {
-        bmiManager.calculateBMI(height: heightTextField.text!, weight: weightTextField.text!)
-        
     }
 }
 
