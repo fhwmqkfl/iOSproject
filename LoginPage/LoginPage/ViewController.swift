@@ -21,6 +21,7 @@ final class ViewController: UIViewController {
         return view
     }()
     
+    
     private var emailInfoLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18)
