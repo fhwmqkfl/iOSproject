@@ -20,8 +20,16 @@ class ViewController: UIViewController {
         tableVIew.delegate = self
         tableVIew.rowHeight = 120
         
+        title = "영화목록"
+        
         movieDataManager.makeMovieData()
 //        moviesArray = movieDataManager.getMovieData()
+    }
+    
+    @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
+        movieDataManager.updateMovieData()
+        tableVIew.reloadData()
+        
     }
 }
 
