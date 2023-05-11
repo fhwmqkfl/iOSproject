@@ -9,18 +9,22 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var tableView = UITableView()
+    private var tableView = UITableView()
+    
+    var moviesArray: [Movie] = []
+    private let dataManager = DataManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tableView.register(<#T##nib: UINib?##UINib?#>, forCellReuseIdentifier: <#T##String#>)
-        
+        tableView.register(TableViewCell.self, forCellReuseIdentifier: "MovieCell")
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 120
         
         setupNaviBar()
         setupTableViewConstraints()
+        setupDatas()
+        
     }
     func setupNaviBar() {
         title = "영화목록"
@@ -45,15 +49,27 @@ class ViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0)
         ])
     }
+    
+    func setupDatas() {
+        dataManager.makeMovieData() // 일반적으로는 서버에 요청
+        moviesArray = dataManager.getMovieData()  // 데이터 받아서 뷰컨의 배열에 저장
+    }
 }
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return moviesArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! TableViewCell
+        
+        cell.mainImageView.image = moviesArray[indexPath.row].movieImage
+        cell.movieNameLabel.text = moviesArray[indexPath.row].movieName
+        cell.descriptionLabel.text = moviesArray[indexPath.row].movieDescription
+        
+        return cell
     }
     
     

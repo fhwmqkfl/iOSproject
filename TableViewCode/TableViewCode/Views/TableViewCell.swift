@@ -58,7 +58,8 @@ class TableViewCell: UITableViewCell {
     }
 
     func setMainImageViewConstraints() {
-
+        mainImageView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             mainImageView.heightAnchor.constraint(equalToConstant: 100),
             mainImageView.widthAnchor.constraint(equalToConstant: 100),
@@ -69,6 +70,7 @@ class TableViewCell: UITableViewCell {
 
     func setMovieNameLabelConstraints() {
         movieNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             movieNameLabel.heightAnchor.constraint(equalToConstant: 22)
         ])
@@ -76,6 +78,7 @@ class TableViewCell: UITableViewCell {
 
     func setStackViewConstraints() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: mainImageView.trailingAnchor, constant: 15),
             stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
