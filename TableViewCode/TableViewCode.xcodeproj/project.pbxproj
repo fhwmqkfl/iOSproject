@@ -16,6 +16,8 @@
 		CCB833D52A0CCA640028BD76 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB833D42A0CCA640028BD76 /* TableViewCell.swift */; };
 		CCB833D72A0CD48E0028BD76 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB833D62A0CD48E0028BD76 /* Movie.swift */; };
 		CCB833D92A0CD4B40028BD76 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB833D82A0CD4B40028BD76 /* DataManager.swift */; };
+		CCB833DB2A0CD82B0028BD76 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB833DA2A0CD82B0028BD76 /* DetailView.swift */; };
+		CCB833DD2A0CD9D70028BD76 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB833DC2A0CD9D70028BD76 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		CCB833D42A0CCA640028BD76 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		CCB833D62A0CD48E0028BD76 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		CCB833D82A0CD4B40028BD76 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		CCB833DA2A0CD82B0028BD76 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		CCB833DC2A0CD9D70028BD76 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				CCB833C12A0CC9580028BD76 /* ViewController.swift */,
+				CCB833DC2A0CD9D70028BD76 /* DetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -87,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				CCB833D42A0CCA640028BD76 /* TableViewCell.swift */,
+				CCB833DA2A0CD82B0028BD76 /* DetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -174,9 +180,11 @@
 				CCB833C22A0CC9580028BD76 /* ViewController.swift in Sources */,
 				CCB833D92A0CD4B40028BD76 /* DataManager.swift in Sources */,
 				CCB833D52A0CCA640028BD76 /* TableViewCell.swift in Sources */,
+				CCB833DB2A0CD82B0028BD76 /* DetailView.swift in Sources */,
 				CCB833BE2A0CC9580028BD76 /* AppDelegate.swift in Sources */,
 				CCB833C02A0CC9580028BD76 /* SceneDelegate.swift in Sources */,
 				CCB833D72A0CD48E0028BD76 /* Movie.swift in Sources */,
+				CCB833DD2A0CD9D70028BD76 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

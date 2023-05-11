@@ -9,7 +9,6 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
     
-    
     var movieNameLabel = UILabel()
     var mainImageView = UIImageView()
     var descriptionLabel = UILabel()
