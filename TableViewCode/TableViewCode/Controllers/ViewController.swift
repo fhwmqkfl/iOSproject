@@ -76,6 +76,10 @@ extension ViewController: UITableViewDataSource {
 }
 
 extension ViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let nextVC = DetailViewController()
+        nextVC.movieData = moviesArray[indexPath.row]
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
 }
 
