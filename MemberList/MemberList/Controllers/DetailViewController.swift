@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PhotosUI
 
 final class DetailViewController: UIViewController {
     
@@ -22,12 +23,37 @@ final class DetailViewController: UIViewController {
 
         setupButtonAction()
         detailView.member = member
+        setupTapGestures()
     }
     
     // 뷰는 버튼 클릭시 액션을 정의하지 못함, 그래서 뷰컨에서 정의
     // 뷰에 있는 버튼의 타겟 설정
     func setupButtonAction() {
         detailView.saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+    }
+    
+    // 제스처 설정 (이미지 뷰가 눌리면, 실행)
+    func setupTapGestures() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(touchUpImageVIew))
+        detailView.mainImageView.addGestureRecognizer(tapGesture)
+        detailView.mainImageView.isUserInteractionEnabled = true
+    }
+    @objc func touchUpImageVIew() {
+        print("이미지뷰 터치")
+        
+        // 기본 설정 셋팅
+        var configuration = PHPickerConfiguration()
+        configuration.selectionLimit = 0
+        configuration.filter = .any(of: [.images])
+        
+        // 기본설정을 가지고, 피커뷰 컨트롤러 생성
+        let picker = PHPickerViewController(configuration: configuration)
+        
+        // 피커뷰 컨트롤러의 대리자 설정
+        picker.delegate = self
+        
+        // 피커뷰 띄우기
+        self.present(picker, animated: true)
     }
     
     @objc func saveButtonTapped() {
@@ -79,4 +105,26 @@ final class DetailViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
  
     }
+}
+
+extension DetailViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        // 피커뷰 dismiss
+        picker.dismiss(animated: true)
+        
+        let itemProvider = results.first?.itemProvider
+        
+        if let itemProvider = itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
+            itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
+                DispatchQueue.main.async {
+                    // 이미지 뷰에 표시
+                    self.detailView.mainImageView.image = image as? UIImage
+                }
+            }
+        } else {
+            print("이미지 못불러움!!!!!")
+        }
+    }
+    
+    
 }
