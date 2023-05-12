@@ -14,6 +14,8 @@ final class DetailViewController: UIViewController {
     
     var member: Member?
     
+    weak var delegate: MemberDelegate? // 강한참조순환을 막기위해 설정
+    
     override func loadView() {
         view = detailView
     }
@@ -72,14 +74,18 @@ final class DetailViewController: UIViewController {
             var newMember = Member(name: name, age: age, phone: phoneNumber, address: address)
             newMember.memberImage = detailView.mainImageView.image
             
-            // 1) 델리게이트 방식 아닌 구현 ⭐️
-            let index = navigationController!.viewControllers.count - 2
-            // 전 화면에 접근하기 위함
-            let vc = navigationController?.viewControllers[index] as! ViewController
-            // 전 화면의 모델에 접근해 멤버를 추가
-            vc.memberListManager.makeNewMember(newMember)
+            // 1) 델리게이트 방식이 아닌 구현 ⭐️
+//            let index = navigationController!.viewControllers.count - 2
+//            // 전 화면에 접근하기 위함
+//            let vc = navigationController?.viewControllers[index] as! ViewController
+//            // 전 화면의 모델에 접근해 멤버를 추가
+//            vc.memberListManager.makeNewMember(newMember)
+            
+            // 2) 델리게이트 방식으로 구현 ⭐️
+            delegate?.addNewMember(newMember)
+            print("함수 실행끝")
          
-        // [2] 멤버가 있다면(멤버의 내용을 업데이트 하기 위한 설정)
+        // [2] 멤버가 있다면( 멤버의 내용을 업데이트 하기 위한 설정)
         } else {
             // 이미지 뷰에 있는 것을 그대로 다시 멤버에 저장
             member!.memberImage = detailView.mainImageView.image
@@ -93,12 +99,8 @@ final class DetailViewController: UIViewController {
             // 뷰에도 바뀐 멤버를 전달(뷰컨트롤러 ==> 뷰)
             detailView.member = member
             
-            // 1) 델리게이트 방식이 아닌 구현 ⭐️
-            let index = navigationController!.viewControllers.count - 2
-            // 전 화면에 접근하기 위함
-            let vc = navigationController?.viewControllers[index] as! ViewController
-            // 전 화면의 모델에 접근해 멤버를 업데이트
-            vc.memberListManager.updateMemberInfo(index: memberId, member!)
+            // 2) 델리게이트 방식으로 구현 ⭐️
+            delegate?.update(index: memberId, member!)
         }
         
         // (모든 일이 끝난뒤) 전 화면으로 돌아가

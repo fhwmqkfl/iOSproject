@@ -28,11 +28,6 @@ final class ViewController: UIViewController {
         setConstraints()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.reloadData()
-    }
-    
     func setConstraints() {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -76,8 +71,8 @@ final class ViewController: UIViewController {
     @objc func plusButtonTapped() {
         let detailVC = DetailViewController()
         
-//        // 다음 화면의 대리자 설정(다음 화면의 대리자 == 지금 현재의 뷰 컨트롤러)
-//        detailVC.delegate = self
+        // 다음 화면의 대리자 설정(다음 화면의 대리자 == 지금 현재의 뷰 컨트롤러)
+        detailVC.delegate = self
         
         // 화면이동
         navigationController?.pushViewController(detailVC, animated: true)
@@ -110,5 +105,20 @@ extension ViewController: UITableViewDelegate {
         let array = memberListManager.getMembersList()
         detailVC.member = array[indexPath.row]
         navigationController?.pushViewController(detailVC, animated: true)
+    }
+}
+
+
+extension ViewController: MemberDelegate {
+    func addNewMember(_ member: Member) {
+        // 모델에 멤버 추가
+        memberListManager.makeNewMember(member)
+        // 테이블뷰를 다시 로드 (다시 그리기)
+        tableView.reloadData()
+    }
+    
+    func update(index: Int, _ member: Member) {
+        memberListManager.updateMemberInfo(index: index, member)
+        tableView.reloadData()
     }
 }
