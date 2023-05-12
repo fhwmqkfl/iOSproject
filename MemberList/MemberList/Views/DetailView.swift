@@ -8,6 +8,34 @@
 import UIKit
 
 final class DetailView: UIView {
+    // MARK: - 멤버 didset 구현
+    var member: Member? {
+        didSet {
+            guard var member = member else {
+                // 멤버가 없으면(새로운 멤버를 추가하는 경우) -> 이경우 버튼은 'save'로 셋팅
+                saveButton.setTitle("SAVE", for: .normal)
+                // 멤버가 없으면 타입 저장 속성의 현재 숫자를 가져옴
+                memberIdTextField.text = "\(Member.memberNumbers)"
+                return
+            }
+            
+            // 멤버가 있을경우
+            mainImageView.image = member.memberImage
+            memberIdTextField.text = "\(member.memberId)"
+            nameTextField.text = member.name
+            phoneNumberTextField.text = member.phone
+            addressTextField.text = member.address
+            
+            // 나이항목(옵셔널 정수형)
+            guard let age = member.age else {
+                // 나이항목이 없으면 빈 문자열로 표시
+                ageTextField.text = ""
+                return
+            }
+            // 나이항목이 있으면 정수 ==> 문자열 변환 표기
+            ageTextField.text = "\(age)"
+        }
+    }
     
     //MARK: - UI구현
     
@@ -209,9 +237,9 @@ final class DetailView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
+        self.backgroundColor = .white
         setupStackView()
-        setupNotification()
+        //        setupNotification()
         setupMemberIdTextField()
     }
     
@@ -225,12 +253,12 @@ final class DetailView: UIView {
     
     //MARK: - 노티피케이션 셋팅
     
-    func setupNotification() {
-        // 노티피케이션의 등록 ⭐️
-        // (OS차원에서 어떤 노티피케이션이 발생하는지 이미 정해져 있음)
-        NotificationCenter.default.addObserver(self, selector: #selector(moveUpAction), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(moveDownAction), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
+    //    func setupNotification() {
+    //        // 노티피케이션의 등록 ⭐️
+    //        // (OS차원에서 어떤 노티피케이션이 발생하는지 이미 정해져 있음)
+    //        NotificationCenter.default.addObserver(self, selector: #selector(moveUpAction), name: UIResponder.keyboardWillShowNotification, object: nil)
+    //        NotificationCenter.default.addObserver(self, selector: #selector(moveDownAction), name: UIResponder.keyboardWillHideNotification, object: nil)
+    //    }
     
     func setupMemberIdTextField() {
         memberIdTextField.delegate = self
@@ -274,47 +302,48 @@ final class DetailView: UIView {
             stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
         ])
     }
+}
     
     //MARK: - 키보드가 나타날때와 내려갈때의 애니메이션 셋팅
     
-    @objc func moveUpAction() {
-        stackViewTopConstraint.constant = -20
-        UIView.animate(withDuration: 0.2) {
-            self.layoutIfNeeded()
-        }
-    }
-    
-    @objc func moveDownAction() {
-        stackViewTopConstraint.constant = 10
-        UIView.animate(withDuration: 0.2) {
-            self.layoutIfNeeded()
-        }
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.endEditing(true)
-    }
+//    @objc func moveUpAction() {
+//        stackViewTopConstraint.constant = -20
+//        UIView.animate(withDuration: 0.2) {
+//            self.layoutIfNeeded()
+//        }
+//    }
+//
+//    @objc func moveDownAction() {
+//        stackViewTopConstraint.constant = 10
+//        UIView.animate(withDuration: 0.2) {
+//            self.layoutIfNeeded()
+//        }
+//    }
+//
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        self.endEditing(true)
+//    }
     
     //MARK: - 소멸자 구현
     
-    deinit {
-        // 노티피케이션의 등록 해제 (해제안하면 계속 등록될 수 있음) ⭐️
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-}
+//    deinit {
+//        // 노티피케이션의 등록 해제 (해제안하면 계속 등록될 수 있음) ⭐️
+//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+//    }
+//}
 
 //MARK: - 텍스트필드 델리게이트 구현
 
 extension DetailView: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        // 멤버 아이디는 수정 못하도록 설정 (멤버아이디의 텍스트필드는 입력 안되도록 설정)
-        if textField == memberIdTextField {
-            return false
-        }
-        
-        // 나머지 텍스트필드는 관계없이 설정 가능
+
+//        // 멤버 아이디는 수정 못하도록 설정 (멤버아이디의 텍스트필드는 입력 안되도록 설정)
+//        if textField == memberIdTextField {
+//            return false
+//        }
+//
+//        // 나머지 텍스트필드는 관계없이 설정 가능
         return true
     }
 }

@@ -11,6 +11,11 @@ final class ViewController: UIViewController {
     private let tableView = UITableView()
     
     var memberListManager = MemberListManager()
+    
+    lazy var plusButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(plusButtonTapped))
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +26,11 @@ final class ViewController: UIViewController {
         setupNaviBar()
         setupTableView()
         setConstraints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     func setConstraints() {
@@ -48,7 +58,7 @@ final class ViewController: UIViewController {
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         
         // 네비게이션바 오른쪽 상단 버튼 설정
-//        self.navigationItem.rightBarButtonItem = self.plusButton
+        self.navigationItem.rightBarButtonItem = self.plusButton
     }
     
     func setupDatas() {
@@ -57,8 +67,20 @@ final class ViewController: UIViewController {
     
     func setupTableView() {
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.rowHeight = 60
+        tableView.register(MyTableViewCell.self, forCellReuseIdentifier: "MyTableViewCell")
         
+    }
+    
+    @objc func plusButtonTapped() {
+        let detailVC = DetailViewController()
+        
+//        // 다음 화면의 대리자 설정(다음 화면의 대리자 == 지금 현재의 뷰 컨트롤러)
+//        detailVC.delegate = self
+        
+        // 화면이동
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 
 }
@@ -69,8 +91,24 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyTableViewCell", for: indexPath) as! MyTableViewCell
+        
+        cell.member = memberListManager[indexPath.row]
+         cell.selectionStyle = .none
+        
+        return cell
     }
     
     
+}
+
+
+extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("selected!")
+        let detailVC = DetailViewController()
+        let array = memberListManager.getMembersList()
+        detailVC.member = array[indexPath.row]
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
