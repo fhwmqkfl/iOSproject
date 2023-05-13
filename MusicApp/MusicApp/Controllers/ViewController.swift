@@ -16,11 +16,15 @@ class ViewController: UIViewController {
     
     var networkManager = NetworkManager.shared
     
+    // search bar
+    let searchController = UISearchController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableView()
         title = "Hello"
+        setupTableView()
         setupDatas()
+        setupSearchBar()
     }
     
     func setupTableView() {
@@ -28,15 +32,13 @@ class ViewController: UIViewController {
         musicTableView.delegate = self
         
         // Nib파일을 사용한다면 등록의 과정이 필요
-        
-//        musicTableView.register(UINib(nibName: Cell.musicCellIdentifier, bundle: nil), forCellReuseIdentifier: Cell.musicCellIdentifier)
+        musicTableView.register(UINib(nibName: Cell.musicCellIdentifier, bundle: nil), forCellReuseIdentifier: Cell.musicCellIdentifier)
 
     }
     
     func setupDatas() {
         // 네트워킹의 시작
         networkManager.fetchMusic(searchTerm: "jazz") { result in
-            print(#function)
             switch result {
             case .success(let musicDatas):
                 // 데이터(배열)을 받아오고 난 후
@@ -50,6 +52,18 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    func setupSearchBar() {
+        self.title = "Music Search"
+        navigationItem.searchController = searchController
+        
+        searchController.searchBar.delegate = self
+        
+        // 첫글자 대문자 설정 없애기
+        searchController.searchBar.autocapitalizationType = .none
+    }
+    
+    
 
 }
 
@@ -62,7 +76,7 @@ extension ViewController: UITableViewDelegate {
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return self.musicArrays.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -78,6 +92,52 @@ extension ViewController: UITableViewDataSource {
         cell.selectionStyle = .none
         return cell
     }
+}
+
+extension ViewController: UISearchBarDelegate {
+
+    // 방법 1. 유저가 글자를 입력하는 순간마다 호출되는 메서드
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
+        print(searchText)
+        // 다시 빈 배열로 만들기 ⭐️
+        self.musicArrays = []
+
+        // 네트워킹 시작
+        networkManager.fetchMusic(searchTerm: searchText) { result in
+            switch result {
+            case .success(let musicDatas):
+                self.musicArrays = musicDatas
+                DispatchQueue.main.async {
+                    self.musicTableView.reloadData()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
     
-    
+//    // 방법 2. 검색(Search) 버튼을 눌렀을때 호출되는 메서드
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        guard let text = searchController.searchBar.text else {
+//            return
+//        }
+//        print(text)
+//        // 다시 빈 배열로 만들기 ⭐️
+//        self.musicArrays = []
+//
+//        // 네트워킹 시작
+//        networkManager.fetchMusic(searchTerm: text) { result in
+//            switch result {
+//            case .success(let musicDatas):
+//                self.musicArrays = musicDatas
+//                DispatchQueue.main.async {
+//                    self.musicTableView.reloadData()
+//                }
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
+//        self.view.endEditing(true)
+//    }
 }

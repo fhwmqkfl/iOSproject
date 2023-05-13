@@ -66,13 +66,13 @@
 		CC73DBB62A0FB5C200A7FA66 /* MusicApp */ = {
 			isa = PBXGroup;
 			children = (
+				CC73DBB72A0FB5C200A7FA66 /* AppDelegate.swift */,
+				CC73DBB92A0FB5C200A7FA66 /* SceneDelegate.swift */,
+				CC73DBD12A0FB7A600A7FA66 /* Constrants.swift */,
 				CC73DBDD2A0FC1FE00A7FA66 /* Networking */,
 				CC73DBD02A0FB78F00A7FA66 /* Models */,
 				CC73DBCC2A0FB6D400A7FA66 /* Views */,
 				CC73DBCB2A0FB6CC00A7FA66 /* Controllers */,
-				CC73DBB72A0FB5C200A7FA66 /* AppDelegate.swift */,
-				CC73DBB92A0FB5C200A7FA66 /* SceneDelegate.swift */,
-				CC73DBD12A0FB7A600A7FA66 /* Constrants.swift */,
 				CC73DBC02A0FB5C300A7FA66 /* Assets.xcassets */,
 				CC73DBC22A0FB5C300A7FA66 /* LaunchScreen.storyboard */,
 				CC73DBC52A0FB5C300A7FA66 /* Info.plist */,
