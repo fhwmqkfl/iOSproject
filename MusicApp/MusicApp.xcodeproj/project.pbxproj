@@ -18,6 +18,8 @@
 		CC73DBDA2A0FBE4800A7FA66 /* MusicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC73DBD82A0FBE4800A7FA66 /* MusicCell.xib */; };
 		CC73DBDC2A0FC1E200A7FA66 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC73DBDB2A0FC1E200A7FA66 /* NetworkingManager.swift */; };
 		CC73DBDF2A0FC4F200A7FA66 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC73DBDE2A0FC4F200A7FA66 /* Music.swift */; };
+		CC73DBE12A0FCEB800A7FA66 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC73DBE02A0FCEB800A7FA66 /* SearchResultViewController.swift */; };
+		CC73DBE32A0FD6E300A7FA66 /* MusicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC73DBE22A0FD6E300A7FA66 /* MusicCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		CC73DBD82A0FBE4800A7FA66 /* MusicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicCell.xib; sourceTree = "<group>"; };
 		CC73DBDB2A0FC1E200A7FA66 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		CC73DBDE2A0FC4F200A7FA66 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
+		CC73DBE02A0FCEB800A7FA66 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		CC73DBE22A0FD6E300A7FA66 /* MusicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				CC73DBBB2A0FB5C200A7FA66 /* ViewController.swift */,
+				CC73DBE02A0FCEB800A7FA66 /* SearchResultViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -94,6 +99,7 @@
 				CC73DBBD2A0FB5C200A7FA66 /* Main.storyboard */,
 				CC73DBD72A0FBE4800A7FA66 /* MusicCell.swift */,
 				CC73DBD82A0FBE4800A7FA66 /* MusicCell.xib */,
+				CC73DBE22A0FD6E300A7FA66 /* MusicCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -190,8 +196,10 @@
 				CC73DBBC2A0FB5C200A7FA66 /* ViewController.swift in Sources */,
 				CC73DBB82A0FB5C200A7FA66 /* AppDelegate.swift in Sources */,
 				CC73DBDC2A0FC1E200A7FA66 /* NetworkingManager.swift in Sources */,
+				CC73DBE32A0FD6E300A7FA66 /* MusicCollectionViewCell.swift in Sources */,
 				CC73DBDF2A0FC4F200A7FA66 /* Music.swift in Sources */,
 				CC73DBBA2A0FB5C200A7FA66 /* SceneDelegate.swift in Sources */,
+				CC73DBE12A0FCEB800A7FA66 /* SearchResultViewController.swift in Sources */,
 				CC73DBD22A0FB7A600A7FA66 /* Constrants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

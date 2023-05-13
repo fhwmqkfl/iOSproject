@@ -26,6 +26,7 @@ class MusicCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         // 일반적으로 이미지가 바뀌는 것처럼 보이는 현상을 없애기 위해서 실행 ⭐️
+        // 이걸 하지 않으면 기존의 이미지가 남아있을수도 있음
         self.mainImageView.image = nil
     }
     
