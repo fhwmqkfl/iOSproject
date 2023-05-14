@@ -16,6 +16,11 @@
 		CC73DC002A0FE61400A7FA66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC73DBFE2A0FE61400A7FA66 /* LaunchScreen.storyboard */; };
 		CC73DC092A0FEA1200A7FA66 /* ToDoData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC73DC072A0FEA1200A7FA66 /* ToDoData+CoreDataClass.swift */; };
 		CC73DC0A2A0FEA1200A7FA66 /* ToDoData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC73DC082A0FEA1200A7FA66 /* ToDoData+CoreDataProperties.swift */; };
+		CC73DC1B2A0FF7AB00A7FA66 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC73DC1A2A0FF7AB00A7FA66 /* CoreDataManager.swift */; };
+		CC73DC1D2A0FF82000A7FA66 /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC73DC1C2A0FF82000A7FA66 /* ToDoCell.swift */; };
+		CC73DC202A0FFA7200A7FA66 /* MyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC73DC1F2A0FFA7200A7FA66 /* MyColor.swift */; };
+		CC73DC222A0FFA9400A7FA66 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC73DC212A0FFA9400A7FA66 /* UIColor+Extension.swift */; };
+		CC9957BC2A113BD00091C6FA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9957BB2A113BD00091C6FA /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +35,11 @@
 		CC73DC012A0FE61400A7FA66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC73DC072A0FEA1200A7FA66 /* ToDoData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDoData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CC73DC082A0FEA1200A7FA66 /* ToDoData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDoData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CC73DC1A2A0FF7AB00A7FA66 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		CC73DC1C2A0FF82000A7FA66 /* ToDoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
+		CC73DC1F2A0FFA7200A7FA66 /* MyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColor.swift; sourceTree = "<group>"; };
+		CC73DC212A0FFA9400A7FA66 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		CC9957BB2A113BD00091C6FA /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,16 +74,53 @@
 			children = (
 				CC73DBF02A0FE61300A7FA66 /* AppDelegate.swift */,
 				CC73DBF22A0FE61300A7FA66 /* SceneDelegate.swift */,
-				CC73DBF42A0FE61300A7FA66 /* ViewController.swift */,
+				CC73DC1E2A0FFA6200A7FA66 /* Helper */,
+				CC73DC192A0FF79400A7FA66 /* Models */,
+				CC73DC182A0FF78A00A7FA66 /* Views */,
+				CC73DC172A0FF78200A7FA66 /* Controllers */,
 				CC73DBF62A0FE61300A7FA66 /* Main.storyboard */,
 				CC73DBFC2A0FE61400A7FA66 /* Assets.xcassets */,
 				CC73DBFE2A0FE61400A7FA66 /* LaunchScreen.storyboard */,
 				CC73DC012A0FE61400A7FA66 /* Info.plist */,
 				CC73DBF92A0FE61300A7FA66 /* ToDoApp.xcdatamodeld */,
-				CC73DC072A0FEA1200A7FA66 /* ToDoData+CoreDataClass.swift */,
-				CC73DC082A0FEA1200A7FA66 /* ToDoData+CoreDataProperties.swift */,
 			);
 			path = ToDoApp;
+			sourceTree = "<group>";
+		};
+		CC73DC172A0FF78200A7FA66 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CC73DBF42A0FE61300A7FA66 /* ViewController.swift */,
+				CC9957BB2A113BD00091C6FA /* DetailViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CC73DC182A0FF78A00A7FA66 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CC73DC1C2A0FF82000A7FA66 /* ToDoCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CC73DC192A0FF79400A7FA66 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CC73DC072A0FEA1200A7FA66 /* ToDoData+CoreDataClass.swift */,
+				CC73DC1A2A0FF7AB00A7FA66 /* CoreDataManager.swift */,
+				CC73DC082A0FEA1200A7FA66 /* ToDoData+CoreDataProperties.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CC73DC1E2A0FFA6200A7FA66 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				CC73DC1F2A0FFA7200A7FA66 /* MyColor.swift */,
+				CC73DC212A0FFA9400A7FA66 /* UIColor+Extension.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,12 +194,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC9957BC2A113BD00091C6FA /* DetailViewController.swift in Sources */,
 				CC73DBF52A0FE61300A7FA66 /* ViewController.swift in Sources */,
 				CC73DBF12A0FE61300A7FA66 /* AppDelegate.swift in Sources */,
+				CC73DC202A0FFA7200A7FA66 /* MyColor.swift in Sources */,
 				CC73DBF32A0FE61300A7FA66 /* SceneDelegate.swift in Sources */,
 				CC73DC0A2A0FEA1200A7FA66 /* ToDoData+CoreDataProperties.swift in Sources */,
 				CC73DC092A0FEA1200A7FA66 /* ToDoData+CoreDataClass.swift in Sources */,
+				CC73DC1B2A0FF7AB00A7FA66 /* CoreDataManager.swift in Sources */,
 				CC73DBFB2A0FE61300A7FA66 /* ToDoApp.xcdatamodeld in Sources */,
+				CC73DC1D2A0FF82000A7FA66 /* ToDoCell.swift in Sources */,
+				CC73DC222A0FFA9400A7FA66 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
