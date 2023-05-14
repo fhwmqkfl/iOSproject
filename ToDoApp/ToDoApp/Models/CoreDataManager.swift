@@ -38,6 +38,7 @@ final class CoreDataManager {
             
             do {
                 // 임시저장소에서 (요청서를 통해서) 데이터 가져오기 (fetch메서드)
+                // NSManagedObject로 반환되기 때문에 타입캐스팅
                 if let fetchedToDoList = try context.fetch(request) as? [ToDoData] {
                     toDoList = fetchedToDoList
                 }
