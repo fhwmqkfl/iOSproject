@@ -51,9 +51,10 @@ final class ViewController: UIViewController {
 //            secondVC.bmiColor = bmiManager.backgroundColor()
             secondVC.bmi = bmiManager.getBMI(height: heightTextField.text!, weight: weightTextField.text!)
         }
-    }
-    // BMI 결과값 계산
-    @IBAction func calculateButtonClicked(_ sender: UIButton) {
+        
+        // 다음화면으로 가기전에 텍스트필드 비우기
+        heightTextField.text = ""
+        weightTextField.text = ""
     }
 }
 

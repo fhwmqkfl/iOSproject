@@ -37,14 +37,6 @@ class SecondViewController: UIViewController {
     
     
     @IBAction func backButtonClicked(_ sender: UIButton) {
-        if let firstVC = presentingViewController as? ViewController {
-            firstVC.weightTextField.text = nil
-            firstVC.heightTextField.text = nil
-            
-        }
         dismiss(animated: true)
-        
     }
-    
-
 }
